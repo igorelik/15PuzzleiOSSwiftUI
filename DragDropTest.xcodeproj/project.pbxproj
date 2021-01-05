@@ -13,6 +13,8 @@
 		421D8EFD25A29E1400D2CD06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 421D8EFC25A29E1400D2CD06 /* Preview Assets.xcassets */; };
 		421D8F0825A29E1500D2CD06 /* DragDropTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F0725A29E1500D2CD06 /* DragDropTestTests.swift */; };
 		421D8F1325A29E1500D2CD06 /* DragDropTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F1225A29E1500D2CD06 /* DragDropTestUITests.swift */; };
+		421D8F2425A2A90F00D2CD06 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F2325A2A90F00D2CD06 /* CardView.swift */; };
+		421D8F2C25A3DCA000D2CD06 /* TileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F2B25A3DCA000D2CD06 /* TileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		421D8F0E25A29E1500D2CD06 /* DragDropTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DragDropTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		421D8F1225A29E1500D2CD06 /* DragDropTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropTestUITests.swift; sourceTree = "<group>"; };
 		421D8F1425A29E1500D2CD06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		421D8F2325A2A90F00D2CD06 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		421D8F2B25A3DCA000D2CD06 /* TileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				421D8EF525A29E1400D2CD06 /* DragDropTestApp.swift */,
+				421D8F2325A2A90F00D2CD06 /* CardView.swift */,
 				421D8EF725A29E1400D2CD06 /* ContentView.swift */,
 				421D8EF925A29E1400D2CD06 /* Assets.xcassets */,
 				421D8EFE25A29E1400D2CD06 /* Info.plist */,
+				421D8F2B25A3DCA000D2CD06 /* TileModel.swift */,
 				421D8EFB25A29E1400D2CD06 /* Preview Content */,
 			);
 			path = DragDropTest;
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				421D8EF825A29E1400D2CD06 /* ContentView.swift in Sources */,
+				421D8F2C25A3DCA000D2CD06 /* TileModel.swift in Sources */,
+				421D8F2425A2A90F00D2CD06 /* CardView.swift in Sources */,
 				421D8EF625A29E1400D2CD06 /* DragDropTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
