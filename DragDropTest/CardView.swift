@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct CardView: View {
-    let gapSize = 10
+    let gapSize = 5
 
     @StateObject var model: TileModel
     var geometryProxy: GeometryProxy
-    var boardSizeInTiles: CGPoint
+    var boardDimensionsInTiles: CGPoint
     @State var offsetWidth = 10
     @State var offsetHeight = 10
     @State var cardOffset = CGSize.zero
@@ -13,11 +13,12 @@ struct CardView: View {
     var dragStartLocation = CGPoint.zero
     
     var cardWidth: CGFloat {
-        (geometryProxy.size.width-((boardSizeInTiles.x+1)*CGFloat(gapSize)))/boardSizeInTiles.x
+        (geometryProxy.size.width-((boardDimensionsInTiles.x+1)*CGFloat(gapSize)))/boardDimensionsInTiles.x
     }
     
     var cardHeight: CGFloat {
-        (geometryProxy.size.height-((boardSizeInTiles.y+1)*CGFloat(gapSize)))/boardSizeInTiles.y
+        cardWidth
+        // (geometryProxy.size.height - ((boardDimensionsInTiles.y+1) * CGFloat(gapSize))) / boardDimensionsInTiles.y
     }
 
     var cardOffsetByCardLocation: CGSize{
@@ -29,10 +30,13 @@ struct CardView: View {
     }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 25, style: .circular)
+        RoundedRectangle(cornerRadius: 10, style: .circular)
             .fill(Color.blue.opacity(0.2))
             .background(Color.white.opacity(0.5))
-            .overlay(Text(model.label))
+            .overlay(
+                Text(model.label)
+                    .font(.largeTitle)
+            )
             .frame(width: cardWidth, height: cardHeight, alignment: .center)
             .offset(cardOffset)
             .position(cardPoistion)
@@ -56,7 +60,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{g in
-            CardView(model: TileModel(id: 1, label: "T", row: 0, column: 0), geometryProxy: g, boardSizeInTiles: CGPoint(x: 2, y: 2))
+            CardView(model: TileModel(id: 1, label: "T", row: 0, column: 0), geometryProxy: g, boardDimensionsInTiles: CGPoint(x: 2, y: 2))
         }
     }
 }

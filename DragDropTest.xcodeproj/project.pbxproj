@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		421D8EF625A29E1400D2CD06 /* DragDropTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8EF525A29E1400D2CD06 /* DragDropTestApp.swift */; };
-		421D8EF825A29E1400D2CD06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8EF725A29E1400D2CD06 /* ContentView.swift */; };
+		421D8EF825A29E1400D2CD06 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8EF725A29E1400D2CD06 /* GameView.swift */; };
 		421D8EFA25A29E1400D2CD06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 421D8EF925A29E1400D2CD06 /* Assets.xcassets */; };
 		421D8EFD25A29E1400D2CD06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 421D8EFC25A29E1400D2CD06 /* Preview Assets.xcassets */; };
 		421D8F0825A29E1500D2CD06 /* DragDropTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F0725A29E1500D2CD06 /* DragDropTestTests.swift */; };
 		421D8F1325A29E1500D2CD06 /* DragDropTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F1225A29E1500D2CD06 /* DragDropTestUITests.swift */; };
 		421D8F2425A2A90F00D2CD06 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F2325A2A90F00D2CD06 /* CardView.swift */; };
 		421D8F2C25A3DCA000D2CD06 /* TileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F2B25A3DCA000D2CD06 /* TileModel.swift */; };
+		421D8F3425A4F54900D2CD06 /* RandomBoardGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F3325A4F54900D2CD06 /* RandomBoardGenerator.swift */; };
+		421D8F3925A4FF0000D2CD06 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D8F3825A4FF0000D2CD06 /* GameLogic.swift */; };
+		42D1A48825A57050009F5C56 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D1A48725A57050009F5C56 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,7 @@
 /* Begin PBXFileReference section */
 		421D8EF225A29E1400D2CD06 /* DragDropTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragDropTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		421D8EF525A29E1400D2CD06 /* DragDropTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropTestApp.swift; sourceTree = "<group>"; };
-		421D8EF725A29E1400D2CD06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		421D8EF725A29E1400D2CD06 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		421D8EF925A29E1400D2CD06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		421D8EFC25A29E1400D2CD06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		421D8EFE25A29E1400D2CD06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		421D8F1425A29E1500D2CD06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		421D8F2325A2A90F00D2CD06 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		421D8F2B25A3DCA000D2CD06 /* TileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileModel.swift; sourceTree = "<group>"; };
+		421D8F3325A4F54900D2CD06 /* RandomBoardGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBoardGenerator.swift; sourceTree = "<group>"; };
+		421D8F3825A4FF0000D2CD06 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		42D1A48725A57050009F5C56 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +105,15 @@
 		421D8EF425A29E1400D2CD06 /* DragDropTest */ = {
 			isa = PBXGroup;
 			children = (
-				421D8EF525A29E1400D2CD06 /* DragDropTestApp.swift */,
-				421D8F2325A2A90F00D2CD06 /* CardView.swift */,
-				421D8EF725A29E1400D2CD06 /* ContentView.swift */,
 				421D8EF925A29E1400D2CD06 /* Assets.xcassets */,
-				421D8EFE25A29E1400D2CD06 /* Info.plist */,
+				421D8F2325A2A90F00D2CD06 /* CardView.swift */,
+				421D8EF525A29E1400D2CD06 /* DragDropTestApp.swift */,
+				421D8F3825A4FF0000D2CD06 /* GameLogic.swift */,
+				421D8EF725A29E1400D2CD06 /* GameView.swift */,
+				42D1A48725A57050009F5C56 /* GameViewModel.swift */,
+				421D8F3325A4F54900D2CD06 /* RandomBoardGenerator.swift */,
 				421D8F2B25A3DCA000D2CD06 /* TileModel.swift */,
+				421D8EFE25A29E1400D2CD06 /* Info.plist */,
 				421D8EFB25A29E1400D2CD06 /* Preview Content */,
 			);
 			path = DragDropTest;
@@ -265,10 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				421D8EF825A29E1400D2CD06 /* ContentView.swift in Sources */,
+				421D8F3925A4FF0000D2CD06 /* GameLogic.swift in Sources */,
+				421D8EF825A29E1400D2CD06 /* GameView.swift in Sources */,
 				421D8F2C25A3DCA000D2CD06 /* TileModel.swift in Sources */,
 				421D8F2425A2A90F00D2CD06 /* CardView.swift in Sources */,
 				421D8EF625A29E1400D2CD06 /* DragDropTestApp.swift in Sources */,
+				421D8F3425A4F54900D2CD06 /* RandomBoardGenerator.swift in Sources */,
+				42D1A48825A57050009F5C56 /* GameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
