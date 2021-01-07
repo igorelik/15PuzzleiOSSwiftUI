@@ -2,12 +2,9 @@ import SwiftUI
 
 struct CardView: View {
     let gapSize: CGFloat = 5
-
     @StateObject var model: TileModel
     var geometryProxy: GeometryProxy
     var boardDimensionsInTiles: CGPoint
-    @State var offsetWidth = 10
-    @State var offsetHeight = 10
     @State var cardOffset = CGSize.zero
     @State var cardPoistion = CGPoint.zero
     var dragStartLocation = CGPoint.zero
@@ -18,7 +15,6 @@ struct CardView: View {
     
     var cardHeight: CGFloat {
         cardWidth
-        // (geometryProxy.size.height - ((boardDimensionsInTiles.y+1) * CGFloat(gapSize))) / boardDimensionsInTiles.y
     }
 
     func cardOffsetByCardLocation(_ tileCoord: CGPoint) -> CGSize{
@@ -41,7 +37,6 @@ struct CardView: View {
             return abs(offset.height) > cardHeight/2
         }
         return abs(offset.width) > cardWidth/2
-
     }
     
     var body: some View {
@@ -89,9 +84,6 @@ struct CardView: View {
                      }
                     .onEnded { gesture in
                         if model.isMovable{
-                            // TODO: -- perform move
-                            //model.row = 1
-                            print("end of drag. offset = \(cardOffset)")
                             if shouldPerformMoveByOffset(cardOffset){
                                 model.move()
                             }
