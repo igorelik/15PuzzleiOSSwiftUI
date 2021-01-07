@@ -8,11 +8,8 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader{ g in
-            ForEach(0 ..< viewModel.gameBoard.count) {
-                //Text(selectionSet[$0])
-                if viewModel.gameBoard[$0] != 0 {
-                    CardView(model: viewModel.getTileModelForBoardCell($0), geometryProxy: g, boardDimensionsInTiles: viewModel.boardDimensions)
-                }
+            ForEach(viewModel.tiles, id: \.id) { tile in
+                CardView(model: tile, geometryProxy: g, boardDimensionsInTiles: viewModel.boardDimensions)
             }
 //            CardView(model: TileModel(id: 1, label: "1", row: 0, column: 0), geometryProxy: g, boardDimensionsInTiles: boardSize)
 //            CardView(model: TileModel(id: 2, label: "2", row: 0, column: 1), geometryProxy: g, boardDimensionsInTiles: boardSize)

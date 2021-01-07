@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CardView: View {
-    let gapSize = 5
+    let gapSize: CGFloat = 5
 
     @StateObject var model: TileModel
     var geometryProxy: GeometryProxy
@@ -21,12 +21,27 @@ struct CardView: View {
         // (geometryProxy.size.height - ((boardDimensionsInTiles.y+1) * CGFloat(gapSize))) / boardDimensionsInTiles.y
     }
 
-    var cardOffsetByCardLocation: CGSize{
-        CGSize(width: gapSize + (Int(cardWidth)+gapSize)*model.column, height: gapSize + (Int(cardHeight)+gapSize)*model.row)
+    func cardOffsetByCardLocation(_ tileCoord: CGPoint) -> CGSize{
+        CGSize(width: gapSize + ((cardWidth+gapSize) * tileCoord.x), height: gapSize + ((cardHeight+gapSize) * tileCoord.y))
     }
     
     var cardPositionByCardLocation: CGPoint{
-        CGPoint(x: gapSize + Int(cardWidth)/2 + (Int(cardWidth)+gapSize)*model.column, y: gapSize + Int(cardHeight)/2 + (Int(cardHeight)+gapSize)*model.row)
+        CGPoint(x: gapSize + cardWidth/2 + ((cardWidth+gapSize) * CGFloat(model.column)), y: gapSize + cardHeight/2 + ((cardHeight+gapSize) * CGFloat(model.row)))
+    }
+    
+    func canMoveToNewOffset(_ offset: CGSize) -> Bool {
+        if abs(offset.height) > 0 {
+            return abs(offset.height) <= cardHeight + 2*gapSize
+        }
+        return abs(offset.width) <= cardWidth + 2*gapSize
+    }
+    
+    func shouldPerformMoveByOffset(_ offset: CGSize) -> Bool {
+        if abs(offset.height) > 0 {
+            return abs(offset.height) > cardHeight/2
+        }
+        return abs(offset.width) > cardWidth/2
+
     }
     
     var body: some View {
@@ -46,12 +61,43 @@ struct CardView: View {
             .gesture(
                 DragGesture()
                     .onChanged{ gesture in
-                        cardOffset = gesture.translation
-                    }
+                        var newOffset = CGSize.zero
+                        let direction = model.possibleDirection
+                        switch direction{
+                            case .none:
+                                return
+                            case .left:
+                                if gesture.translation.width < 0 {
+                                    newOffset = CGSize(width: gesture.translation.width, height: cardOffset.height)
+                                }
+                            case .right:
+                                if gesture.translation.width > 0 {
+                                    newOffset = CGSize(width: gesture.translation.width, height: cardOffset.height)
+                                }
+                            case .up:
+                                if gesture.translation.height < 0 {
+                                    newOffset = CGSize(width: cardOffset.width , height: gesture.translation.height)
+                                }
+                            case .down:
+                                if gesture.translation.height > 0 {
+                                    newOffset = CGSize(width: cardOffset.width , height: gesture.translation.height)
+                                }
+                        }
+                        if canMoveToNewOffset(newOffset){
+                            cardOffset = newOffset
+                        }
+                     }
                     .onEnded { gesture in
-                        model.row = 1
-                        cardOffset = CGSize.zero
-                        cardPoistion = cardPositionByCardLocation
+                        if model.isMovable{
+                            // TODO: -- perform move
+                            //model.row = 1
+                            print("end of drag. offset = \(cardOffset)")
+                            if shouldPerformMoveByOffset(cardOffset){
+                                model.move()
+                            }
+                            cardOffset = CGSize.zero
+                            cardPoistion = cardPositionByCardLocation
+                        }
                     }
             )
     }
@@ -60,7 +106,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{g in
-            CardView(model: TileModel(id: 1, label: "T", row: 0, column: 0), geometryProxy: g, boardDimensionsInTiles: CGPoint(x: 2, y: 2))
+            CardView(model: TileModel(id: 1, label: "T", row: 0, column: 0, gameLogic: GameLogic(board: [Int](0...15), size: 4)), geometryProxy: g, boardDimensionsInTiles: CGPoint(x: 2, y: 2))
         }
     }
 }
